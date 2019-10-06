@@ -1,4 +1,5 @@
 const express = require('express')
+const SessionController = require('./controllers/SessionController')
 const routes = express.Router()
 
 //Verbos principais do http: get, post, put, delete
@@ -22,9 +23,11 @@ const routes = express.Router()
 //req.body
 //para utilizar o body como json é necessário colocar expressamente no código com a linha :
 //app.use(express.json())
+//routes.post('/users', (req, res) => {
+//    return res.json(req.body)
+//})
 
-routes.post('/users', (req, res) => {
-    return res.json(req.body)
-})
+
+routes.post('/sessions', SessionController.store)
 
 module.exports = routes
